@@ -1,0 +1,7 @@
+version: 2
+
+sources:
+  - name: DeaAnalytics
+    schema: DeaAnalytics
+    tables:
+      - name: raw_bank_marketing 

@@ -1,0 +1,70 @@
+version: 2
+
+modelos:
+  - name: staging_bank_marketing
+    description: This table has basic information about a customer, as well as some derived facts based on a customer's orders
+  - columns:
+      - name: age
+        tests:
+          - not_null
+      - name: job
+        tests:
+          - not_null
+          - accepted_values:
+            values: ['admin.','unknown','unemployed','management','housemaid','entrepreneur','student', 'blue-collar','self-employed','retired','technician','services']
+      - name: marital
+        tests:
+          - not_null
+          - accepted_values:
+            values: ['married','divorced','single','divorced','widowed']    
+      - name: education
+        tests:
+          - not_null
+          - accepted_values:
+            values: ['unknown','secondary','primary','tertiary']
+      - name: default
+        tests:
+          - not_null
+      - name: balance
+        tests:
+          - not_null
+      - name: housing
+        tests:
+          - not_null
+      - name: loan
+        tests:
+          - not_null
+      - name: contact
+        tests:
+          - not_null
+          - accepted_values:
+            values: ['unknown','telephone','cellular']
+      - name: day
+        tests:
+          - not_null
+      - name: month
+        tests:
+          - not_null
+          - accepted_values:
+            values: ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec']
+      - name: duration
+        tests:
+          - not_null    
+      - name: campaign
+        tests:
+          - not_null    
+      - name: pdays
+        tests:
+          - not_null
+          - contactabilidad:
+            config:
+              where: 'pdays<-1'
+      - name: previous
+        tests:
+          - not_null    
+      - name: poutcome
+        tests:
+          - not_null    
+      - name: y
+        tests:
+          - not_null  
