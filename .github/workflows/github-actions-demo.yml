@@ -16,3 +16,22 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+
+
+
+
+- name: Checkout
+  uses: actions/checkout@v4
+
+- name: Collect data
+  run: |
+    echo "TIMESTAMP=$(date --utc +%FT%T%Z)" >> $GITHUB_ENV
+
+- name: Write to DWH
+  uses: Staffbase/bigquery-github-action@v1.1.0
+  with:
+    credentials_json: ./test_analitycs_engineering/fresh-catwalk-438015-b4-d4954f42b87e.json
+    bigquery_project: fresh-catwalk-438015-b4
+    bigquery_dataset: DeaAnalitycs
+    bigquery_table: test
+    payload_json: '{ "property": "${{ env.TIMESTAMP }} this is a test"}'
