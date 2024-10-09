@@ -1,3 +1,7 @@
+- uses: actions/checkout@v4
+  with:
+    sparse-checkout: .
+    
 - name: Checkout
   uses: actions/checkout@v4
 
