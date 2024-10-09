@@ -1,0 +1,15 @@
+- name: Checkout
+  uses: actions/checkout@v4
+
+- name: Collect data
+  run: |
+    echo "TIMESTAMP=$(date --utc +%FT%T%Z)" >> $GITHUB_ENV
+
+- name: Write to DWH
+  uses: Staffbase/bigquery-github-action@v1.1.0
+  with:
+    credentials_json: ${{ secrets.YOUR_SERVICE_ACCOUNT_KEY }}
+    bigquery_project: fresh-catwalk-438015-b4
+    bigquery_dataset: DeaAnalitycs
+    bigquery_table: test
+    payload_json: '{ "property": "${{ env.TIMESTAMP }} this is a test"}'
