@@ -6,13 +6,9 @@ jobs:
     steps:
       - name: checkoutv4
         uses: actions/checkout@v4
-        with:
-          sparse-checkout: .
-    
-      - name: Collect data
-        run: |
-          echo "TIMESTAMP=$(date --utc +%FT%T%Z)" >> $GITHUB_ENV
-
+  bq_deployment:
+    runs-on: ubuntu-latest
+    steps:
       - name: Write to DWH
         uses: Staffbase/bigquery-github-action@v1.1.0
         with:
