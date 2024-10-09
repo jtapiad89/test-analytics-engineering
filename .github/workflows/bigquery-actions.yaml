@@ -1,4 +1,5 @@
 name: bigquery deploy
+run-name: ${{ github.actor }} is executing bigquery deployment
 on: [push]
 jobs:
   job_checkout:
@@ -12,7 +13,7 @@ jobs:
       - name: Write to DWH
         uses: Staffbase/bigquery-github-action@v1.1.0
         with:
-          credentials_json: ${{ secrets.YOUR_SERVICE_ACCOUNT_KEY }}
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
           bigquery_project: fresh-catwalk-438015-b4
           bigquery_dataset: DeaAnalitycs
           bigquery_table: test
