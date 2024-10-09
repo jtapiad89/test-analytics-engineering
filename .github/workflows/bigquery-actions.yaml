@@ -7,14 +7,11 @@ jobs:
     steps:
       - name: checkoutv4
         uses: actions/checkout@v4
-  bq_deployment:
-    runs-on: ubuntu-latest
-    steps:
       - name: Write to DWH
         uses: Staffbase/bigquery-github-action@v1.1.0
         with:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
           bigquery_project: fresh-catwalk-438015-b4
-          bigquery_dataset: DeaAnalitycs
+          bigquery_dataset: DeaAnalytics
           bigquery_table: test
           payload_json: '{ "property": "${{ env.TIMESTAMP }} this is a test"}'
