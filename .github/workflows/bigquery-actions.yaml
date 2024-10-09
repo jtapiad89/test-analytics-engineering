@@ -1,3 +1,4 @@
+name: bigquery deploy
 - uses: actions/checkout@v4
   with:
     sparse-checkout: .
